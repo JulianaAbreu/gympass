@@ -1,23 +1,22 @@
-import React from "react";
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import DefaultLayout from './views/layouts/DefaultLayout';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Roboto mono';
+  }
+`;
+
+const App = () => (
+  <Fragment>
+    <BrowserRouter>
+      <Route path="/" exact component={DefaultLayout} />
+    </BrowserRouter>
+    <GlobalStyle />
+  </Fragment>
+);
 
 export default App;
