@@ -1,10 +1,10 @@
 import types from './types';
 import { get, getQueryParams } from '../../utils/request';
 
-function listRepositories(query) {
+function listRepositories(search) {
   return {
     type: types.LIST_REPOSITORIES,
-    promise: get(`repos${getQueryParams(query)}`),
+    promise: get(`users/reactjs/repos${getQueryParams(search)}`),
   };
 }
 

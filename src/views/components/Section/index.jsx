@@ -7,7 +7,7 @@ import './style.less';
 const spinIcon = <Icon type="loading" />;
 const cardHeader = (title, icon) => (
   <div>
-    {title}
+    <span>{title}</span>
     <Icon style={{ marginLeft: 5 }} type={icon} />
   </div>
 );

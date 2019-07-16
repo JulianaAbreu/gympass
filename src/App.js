@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 const App = () => (
   <Fragment>
     <BrowserRouter>
-      <Route path="/" exact component={DefaultLayout} />
+      <Route path="/" component={DefaultLayout} />
     </BrowserRouter>
     <GlobalStyle />
   </Fragment>

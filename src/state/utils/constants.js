@@ -1,1 +1,1 @@
-export const API = 'https://api.github.com/users/reactjs';
+export const API = 'https://api.github.com';

@@ -42,36 +42,50 @@ const CardContainer = styled(Card)`
 `;
 
 const NameItem = styled.span`
-  border-bottom: 5px solid #f42b52;
+  border-bottom: 5px dashed #9c8085;
 `;
 
 const { Meta } = Card;
 
-const StandardList = ({ data }) => (
+const onClick = (name, history) => {
+  const { push } = history;
+  push(`${name}/commits`);
+};
+
+const StandardList = ({ data, history }) => (
   <List
-    grid={{ gutter: 24, column: 3 }}
+    grid={{
+      gutter: 24,
+      xs: 1,
+      sm: 1,
+      md: 2,
+      lg: 2,
+      xl: 3,
+      xxl: 3,
+    }}
     dataSource={data}
-    renderItem={(item) => (
-      <List.Item key={item.id}>
-        <CardContainer style={{ minHeight: 200 }}>
+    renderItem={({ id, name, description, language, updated_at: updateAt }) => (
+      <List.Item key={id}>
+        <CardContainer
+          style={{ minHeight: 200 }}
+          onClick={() => onClick(name, history)}
+        >
           <Meta
             title={
               <div>
-                <NameItem>{item.name}</NameItem>
-                {item.language && (
+                <NameItem>{name}</NameItem>
+                {language && (
                   <LanguageItem>
                     <Dot />
-                    <TextHighLight>{item.language}</TextHighLight>
+                    <TextHighLight>{language}</TextHighLight>
                   </LanguageItem>
                 )}
               </div>
             }
-            description={
-              <p>Updated {formatDate(item.updated_at, 'relative')}</p>
-            }
+            description={<p>Updated {formatDate(updateAt, 'relative')}</p>}
           />
 
-          {item.description}
+          {description}
         </CardContainer>
       </List.Item>
     )}
@@ -79,6 +93,8 @@ const StandardList = ({ data }) => (
 );
 
 StandardList.propTypes = {
+  history: PropTypes.object.isRequired,
+
   data: PropTypes.array.isRequired,
 };
 

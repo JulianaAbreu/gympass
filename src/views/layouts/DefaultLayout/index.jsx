@@ -1,8 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import RepositoriesPage from '../../pages/RepositoriesPage';
+import CommitsPage from '../../pages/CommitsPage';
+
 import logo from '../../../assets/images/octocat.svg';
 
 const LayoutWrapper = styled.div`
@@ -43,8 +45,14 @@ const LogoContent = styled.div`
   display: flex;
   align-items: center;
   h1 {
-    color: white;
     margin: 0;
+  }
+  h1,
+  a {
+    color: white;
+  }
+  a {
+    margin-left: 30px;
   }
 `;
 
@@ -55,13 +63,15 @@ const DefaultLayout = () => (
         <LogoImg src={logo} alt="logo" />
         &nbsp;
         <h1>GitHub</h1>
+        <Link to="/">REPOSITORIES</Link>
       </LogoContent>
       <div>
-        <span>Olá, Juliana</span>
+        <span>Hello, Juliana.</span>
       </div>
     </Header>
     <Content>
-      <Route path="/" component={RepositoriesPage} />
+      <Route path="/" exact component={RepositoriesPage} />
+      <Route path="/:repository/commits" exact component={CommitsPage} />
     </Content>
   </LayoutWrapper>
 );

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import Section from '../../components/Section';
 import StandardList from '../../components/StandardList';
+import SearchForm from './components/SearchForm';
 
 import {
   repositoriesActions,
@@ -14,30 +15,70 @@ import {
 
 class RepositoriesListPage extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
 
-    repositories: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    languages: PropTypes.array.isRequired,
   };
 
-  state = {};
+  state = {
+    search: {},
+    data: [],
+  };
 
   componentDidMount() {
+    this.fetchRepositories();
+  }
+
+  fetchRepositories = async () => {
     const {
       actions: { listRepositories },
     } = this.props;
-    console.log(this.props);
+    const { search } = this.state;
 
-    listRepositories();
-  }
+    const params = {
+      ...search,
+    };
+
+    const result = await listRepositories(params);
+    const { payload } = result;
+
+    await this.setState({
+      data: [...payload],
+    });
+  };
+
+  handleSubmitFilters = () => {
+    const {
+      searchForm: { validateFields },
+    } = this;
+
+    validateFields(async (err, values) => {
+      await this.setState({
+        search: { ...values },
+      });
+      await this.fetchRepositories();
+    });
+  };
+
+  getFormRef = (ref) => {
+    this.searchForm = ref;
+  };
 
   render() {
-    const { repositories, isLoading } = this.props;
-    console.log(repositories);
+    const { isLoading, history, languages } = this.props;
+    const { data } = this.state;
 
     return (
-      <Section title="REPOSITÓRIOS" icon="book" isLoading={isLoading}>
-        <StandardList data={repositories} />
+      <Section title="REPOSITORIES" icon="book" isLoading={isLoading}>
+        <SearchForm
+          languages={languages}
+          ref={this.getFormRef}
+          onSubmit={this.handleSubmitFilters}
+          loading={isLoading}
+        />
+        <StandardList data={data} history={history} />
       </Section>
     );
   }
@@ -50,7 +91,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(repositoriesActions, dispatch),
+  actions: bindActionCreators({ ...repositoriesActions }, dispatch),
 });
 
 export default connect(
