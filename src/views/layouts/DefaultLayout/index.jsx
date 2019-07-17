@@ -22,7 +22,7 @@ const Content = styled.main`
   padding: 4rem 4rem;
 `;
 
-const Header = styled.header`
+export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;

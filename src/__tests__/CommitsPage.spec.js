@@ -2,6 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { middleware as reduxPackMiddleware } from 'redux-pack';
 import configureStore from 'redux-mock-store';
+
 import CommitsTimeline from '../views/pages/CommitsPage/components/CommitsTimeline';
 import CommitsPage from '../views/pages/CommitsPage';
 
@@ -25,14 +26,13 @@ let wrapper;
 
 describe('CommitsPage', () => {
   it('should dispatch LIST_COMMITS and LIST_BRANCHES actions', () => {
-    const listCommits = jest.fn();
-
     const actions = store.getState().actions;
     const expectedActions = [
       { type: 'commits/LIST_COMMITS' },
       { type: 'branches/LIST_BRANCHES' },
     ];
 
+    const listCommits = jest.fn();
     const commits = [{ id: 1, message: 'test message' }];
     const match = { params: { repository: 'reactjs.org' } };
     const branches = [[{ id: 1, name: 'master' }]];

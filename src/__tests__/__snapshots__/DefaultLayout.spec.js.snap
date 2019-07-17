@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DefaultLayout should contain a Route element inside Content 1`] = `ShallowWrapper {}`;
+
 exports[`DefaultLayout should contain a route 1`] = `ShallowWrapper {}`;

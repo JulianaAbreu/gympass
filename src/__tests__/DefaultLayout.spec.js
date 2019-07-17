@@ -8,12 +8,12 @@ import styled from 'styled-components';
 import DefaultLayout from '../views/layouts/DefaultLayout';
 
 describe('DefaultLayout', () => {
-  it('should be a <h1> element', () => {
+  it('should be a <h1> element in Header styled component', () => {
     const wrapper = shallow(<DefaultLayout />);
     expect(wrapper.find('h1')).toHaveLength(1);
   });
 
-  it('should contain a route', () => {
+  it('should contain a Route element inside Content', () => {
     const Content = styled.main``;
     const wrapper = shallow(
       <Content>
