@@ -4,7 +4,7 @@
 
 This project allows you to view repositories and commits of the user "reactjs" according to user search parameters.
 
-The technologies used were React, redux and redux-pack (middleware for redux) to handle asynchronous requests handling, styled-components (CSS-in-JS), Jest + Enzyme to tests unit and ESLint + Prettier as linter.
+The technologies used were React, redux and redux-pack (middleware for redux) to handle asynchronous requests handling, styled-components (CSS-in-JS), Jest + Enzyme to tests unit, ESLint + Prettier as linter and Ducks pattern for redux reducer bundles (https://github.com/erikras/ducks-modular-redux).
 
 ## ES6+ features
 #### Destructuring

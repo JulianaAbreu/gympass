@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Adapter from 'enzyme-adapter-react-16';
-import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import styled from 'styled-components';
 

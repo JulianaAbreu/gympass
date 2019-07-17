@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { middleware as reduxPackMiddleware } from 'redux-pack';
@@ -11,7 +12,7 @@ const mockStore = configureStore(middlewares);
 const listCommitsMock = jest.fn();
 const listBranchesMock = jest.fn();
 
-let store = mockStore({
+const store = mockStore({
   commits: {
     listCommits: listCommitsMock,
   },
@@ -22,23 +23,22 @@ let store = mockStore({
   ],
 });
 
-let wrapper;
-
 describe('CommitsPage', () => {
   it('should dispatch LIST_COMMITS and LIST_BRANCHES actions', () => {
-    const actions = store.getState().actions;
+    const { actions: actionsStore } = store.getState();
+    const actions = actionsStore;
+
     const expectedActions = [
       { type: 'commits/LIST_COMMITS' },
       { type: 'branches/LIST_BRANCHES' },
     ];
 
-    const listCommits = jest.fn();
     const commits = [{ id: 1, message: 'test message' }];
     const match = { params: { repository: 'reactjs.org' } };
     const branches = [[{ id: 1, name: 'master' }]];
     const isLoading = false;
 
-    wrapper = shallow(
+    const wrapper = shallow(
       <CommitsPage
         match={match}
         commits={commits}
