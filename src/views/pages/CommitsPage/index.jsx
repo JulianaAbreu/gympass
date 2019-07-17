@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
+import styled from 'styled-components';
 
 import {
   branchesActions,
@@ -14,6 +16,11 @@ import { commitsActions, commitsSelectors } from '../../../state/ducks/commits';
 import Section from '../../components/Section';
 import CommitsTimeline from './components/CommitsTimeline';
 import SearchForm from './components/SearchForm';
+
+const LinkRouter = styled(Link)`
+  display: flex;
+  justify-content: center;
+`;
 
 class CommitsPage extends Component {
   static propTypes = {
@@ -136,22 +143,25 @@ class CommitsPage extends Component {
     const { commits, branches, isLoading } = this.props;
 
     return (
-      <Section title="COMMITS" isLoading={isLoading}>
-        <SearchForm
-          branches={branches}
-          ref={this.getFormRef}
-          onSubmit={this.handleSubmitFilters}
-          loading={isLoading}
-        />
-        <CommitsTimeline
-          handleInfiniteOnLoad={this.handleInfiniteOnLoad}
-          initLoading={initLoading}
-          loading={loading}
-          data={commits}
-          list={list}
-          onLoadMore={this.onLoadMore}
-        />
-      </Section>
+      <Fragment>
+        <LinkRouter to="/">{`<`} Return to repositories list</LinkRouter>
+        <Section title="COMMITS" icon="history" isLoading={isLoading}>
+          <SearchForm
+            branches={branches}
+            ref={this.getFormRef}
+            onSubmit={this.handleSubmitFilters}
+            loading={isLoading}
+          />
+          <CommitsTimeline
+            handleInfiniteOnLoad={this.handleInfiniteOnLoad}
+            initLoading={initLoading}
+            loading={loading}
+            data={commits}
+            list={list}
+            onLoadMore={this.onLoadMore}
+          />
+        </Section>
+      </Fragment>
     );
   }
 }

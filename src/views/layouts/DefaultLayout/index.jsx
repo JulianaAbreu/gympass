@@ -66,7 +66,7 @@ const DefaultLayout = () => (
         <Link to="/">REPOSITORIES</Link>
       </LogoContent>
       <div>
-        <span>Hello, Juliana.</span>
+        <span>Hello, reactjs.</span>
       </div>
     </Header>
     <Content>

@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, Card } from 'antd';
+import { List, Card, Icon } from 'antd';
 import styled from 'styled-components';
 
 import formatDate from '../../../utilities/dateTimeFormatter';
-
-// primary-color: #f42b52;
 
 const Dot = styled.i`
   height: 9px;
@@ -29,6 +27,7 @@ const LanguageItem = styled.span`
 
 const CardContainer = styled(Card)`
   border-radius: 5px;
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.85);
     transition: 0.5s;
@@ -38,6 +37,19 @@ const CardContainer = styled(Card)`
     div > span > span {
       color: white;
     }
+  }
+`;
+
+const StarsCountItem = styled.div`
+  margin-top: 10px;
+
+  i {
+    color: #f42b52;
+  }
+
+  span {
+    margin-left: 5px;
+    font-weight: 600;
   }
 `;
 
@@ -64,10 +76,17 @@ const StandardList = ({ data, history }) => (
       xxl: 3,
     }}
     dataSource={data}
-    renderItem={({ id, name, description, language, updated_at: updateAt }) => (
+    renderItem={({
+      id,
+      name,
+      description,
+      language,
+      updated_at: updateAt,
+      stargazers_count: starsCount,
+    }) => (
       <List.Item key={id}>
         <CardContainer
-          style={{ minHeight: 200 }}
+          style={{ minHeight: 210 }}
           onClick={() => onClick(name, history)}
         >
           <Meta
@@ -82,10 +101,18 @@ const StandardList = ({ data, history }) => (
                 )}
               </div>
             }
-            description={<p>Updated {formatDate(updateAt, 'relative')}</p>}
+            description={
+              <p>
+                <Icon type="calendar" /> Updated
+                {formatDate(updateAt, 'relative')}
+              </p>
+            }
           />
-
-          {description}
+          <span>{description}</span>
+          <StarsCountItem>
+            <Icon type="star" theme="filled" />
+            <span>{starsCount}</span>
+          </StarsCountItem>
         </CardContainer>
       </List.Item>
     )}

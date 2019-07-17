@@ -19,7 +19,6 @@ class RepositoriesListPage extends Component {
     actions: PropTypes.object.isRequired,
 
     isLoading: PropTypes.bool.isRequired,
-    languages: PropTypes.array.isRequired,
   };
 
   state = {
@@ -67,13 +66,12 @@ class RepositoriesListPage extends Component {
   };
 
   render() {
-    const { isLoading, history, languages } = this.props;
+    const { isLoading, history } = this.props;
     const { data } = this.state;
 
     return (
       <Section title="REPOSITORIES" icon="book" isLoading={isLoading}>
         <SearchForm
-          languages={languages}
           ref={this.getFormRef}
           onSubmit={this.handleSubmitFilters}
           loading={isLoading}

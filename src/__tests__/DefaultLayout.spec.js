@@ -1,0 +1,31 @@
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Adapter from 'enzyme-adapter-react-16';
+import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import styled from 'styled-components';
+
+import DefaultLayout from '../views/layouts/DefaultLayout';
+
+describe('DefaultLayout', () => {
+  it('should be a <h1> element', () => {
+    const wrapper = shallow(<DefaultLayout />);
+    expect(wrapper.find('h1')).toHaveLength(1);
+  });
+
+  it('should contain a route', () => {
+    const Content = styled.main``;
+    const wrapper = shallow(
+      <Content>
+        <Route />
+      </Content>,
+    );
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Route)).toHaveLength(1);
+  });
+
+  it('should render a DefaultLayout with content', () => {
+    const wrapper = shallow(<DefaultLayout />);
+    expect(wrapper.find('div').children()).toHaveLength(1);
+  });
+});

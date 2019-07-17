@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
@@ -11,12 +11,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => (
-  <Fragment>
+  <div className="App">
     <BrowserRouter>
       <Route path="/" component={DefaultLayout} />
     </BrowserRouter>
     <GlobalStyle />
-  </Fragment>
+  </div>
 );
 
 export default App;

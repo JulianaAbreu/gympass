@@ -23,7 +23,10 @@ const loadMore = (onLoadMore, loading, initLoading, list) =>
 
 const description = (commit, author) => (
   <div>
-    <p>Commited {formatDate(commit.committer.date, 'relative')}</p>
+    <p>
+      <Icon type="calendar" />
+      &ensp;Commited {formatDate(commit.committer.date, 'relative')}
+    </p>
     <h4>{commit.message}</h4>
     <div>
       {!isEmpty(author) ? (
