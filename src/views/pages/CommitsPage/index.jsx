@@ -64,17 +64,25 @@ class CommitsPage extends Component {
         params: { repository },
       },
     } = this.props;
-    const { search } = this.state;
+    const {
+      search: { sha, author, path },
+    } = this.state;
+
+    const formattedSearch = {
+      sha: !isEmpty(sha) ? sha : null,
+      author: !isEmpty(author) ? author : null,
+      path: !isEmpty(path) ? path : null,
+    };
 
     const params = {
       per_page: 20,
       page: 1,
-      ...search,
+      ...formattedSearch,
     };
 
     const result = await listCommits(repository, params);
 
-    if (!isEmpty(result.payload)) {
+    if (!result.error && !isEmpty(result.payload)) {
       this.setState({
         list: [...result.payload],
         data: [...result.payload],
@@ -113,7 +121,7 @@ class CommitsPage extends Component {
     const result = await listCommits(repository, params);
     const { payload } = result;
 
-    if (!isEmpty(result.payload)) {
+    if (!result.error && !isEmpty(result.payload)) {
       await this.setState({
         list: [...data, ...payload],
         loading: false,

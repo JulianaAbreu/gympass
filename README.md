@@ -1,8 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GitHub profile
+
+## Description
+
+This project aims to list the "reactjs" user repositories and the commits made in each repository.
+
+The technologies used were React, redux and redux-pack (middleware for redux) to handle asynchronous requests handling, styled-components (CSS-in-JS), Jest + Enzyme to tests unit, and ESLint + Prettier as linter.
+
+## ES6+ features
+#### Destructuring
+Used to facilitate access to data within an array or object and to create variables that contain this data. This feature leave the code shorter and clearer.
+
+#### Spread operator
+Used to combine arrays, set values ​​of the prior state of the reducer, and to set values ​​to arrays or objects in general.
+
+#### Async/await
+Used to work with asynchronous code, as in calling a function that returns a promise. This way it is simpler and leaves the code clear.
+
+#### Arrow functions
+allows writing functions without losing the current "this" scope and leaving the code shorter.
+
+
+
+
+## Installation
+Clone the repository https://github.com/JulianaAbreu/gympass.git
+
+In the terminal:
+#### `git clone https://github.com/JulianaAbreu/gympass.git`
+
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can Install the dependencies with the command:
+### `npm install`
+
+Run project:
 
 ### `npm start`
 
@@ -26,43 +58,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

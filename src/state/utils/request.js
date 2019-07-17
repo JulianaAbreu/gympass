@@ -53,8 +53,6 @@ export const request = (
  */
 export const getQueryParams = (params) => {
   if (isEmpty(params)) return '';
-
   const urlParams = stringify(params);
-
   return `?${urlParams}`;
 };

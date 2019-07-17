@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 import Section from '../../components/Section';
 import StandardList from '../../components/StandardList';
@@ -43,9 +44,11 @@ class RepositoriesListPage extends Component {
     const result = await listRepositories(params);
     const { payload } = result;
 
-    await this.setState({
-      data: [...payload],
-    });
+    if (!result.error && !isEmpty(payload)) {
+      await this.setState({
+        data: [...payload],
+      });
+    }
   };
 
   handleSubmitFilters = () => {
