@@ -1,4 +1,4 @@
-# GitHub profile
+# GitHub profile :octocat:
 
 ## Description
 

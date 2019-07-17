@@ -103,7 +103,7 @@ const StandardList = ({ data, history }) => (
             }
             description={
               <p>
-                <Icon type="calendar" /> Updated
+                <Icon type="calendar" /> Updated&ensp;
                 {formatDate(updateAt, 'relative')}
               </p>
             }
